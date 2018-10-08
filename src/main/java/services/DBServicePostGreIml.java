@@ -8,20 +8,20 @@ import model.CDRModel;
 
 import java.util.ArrayList;
 
-public class DBServicePostGradeIml implements DBService {
+public class DBServicePostGreIml implements DBService {
 
     private static DBService instance = null;
 
     public static DBService getInstance()
     {
         if (instance == null )
-            instance = new DBServicePostGradeIml();
+            instance = new DBServicePostGreIml();
         return instance;
     }
 
-    private DBServicePostGradeIml(){}
+    private DBServicePostGreIml(){}
 
-    //TODO : implement according to postgrade sql
+    //TODO : implement according to postgre sql
     @Override
     public ArrayList<CDRModel> retrieveCDR(int numObjects) {
         return null;
