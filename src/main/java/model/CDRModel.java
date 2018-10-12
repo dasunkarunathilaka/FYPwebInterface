@@ -52,4 +52,9 @@ public class CDRModel implements Serializable
     public String getDuration() {
         return duration;
     }
+
+    public String getJSONString()
+    {
+        return called_num+","+called_tower+","+recipient_num+","+recipient_tower+","+datetime+","+duration;
+    }
 }

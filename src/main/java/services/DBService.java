@@ -6,6 +6,7 @@ package services;
 
 import model.CDRModel;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface DBService
@@ -15,7 +16,7 @@ public interface DBService
      * @param numObjects
      * @return array list of CDRModel
      */
-    public abstract ArrayList<CDRModel> retrieveCDR(int numObjects);
+    public abstract ArrayList<CDRModel> retrieveCDR(int numObjects) throws SQLException;
 
 
     /**
