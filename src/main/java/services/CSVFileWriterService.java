@@ -28,7 +28,7 @@ public class CSVFileWriterService
             writable.add(model.getJSONString());
         }
         CSVWriter writer = new CSVWriter(new FileWriter(csv));
-        writer.writeAll((Iterable<String[]>) writable);
+//        writer.writeAll((Iterable<String[]>) writable);
         System.out.println("CSV File written successfully All at a time");
         writer.close();
     }
