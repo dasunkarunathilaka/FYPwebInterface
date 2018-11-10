@@ -120,7 +120,7 @@
             <h5>Number of Records :</h5>
         </div>
         <div class="form-group col-xs-8 form-margin">
-            <select class="form-control" id="exampleFormControlSelect2">
+            <select class="form-control" id="exampleFormControlSelect2" name="userInput">
                 <option>10 000</option>
                 <option>50 000</option>
                 <option>100 000</option>
@@ -128,8 +128,41 @@
                 <option>1 000 000</option>
             </select>
         </div>
-        <div>
-            <input type="submit" value="OK" class="btn">
+
+        <div class="col-xs-4 form-margin">
+            <h5>Start Date :</h5>
+        </div>
+
+        <div class="form-group col-xs-8 form-margin">
+            <!-- Date input -->
+            <input id="startDate" name="date" placeholder="Start date" type="date" />
+        </div>
+
+        <div class="col-xs-4 form-margin">
+            <h5>End Date :</h5>
+        </div>
+
+        <div class="form-group col-xs-8 form-margin">
+            <!-- Date input -->
+            <input id="endDate" name="date" placeholder="End date" type="date" />
+        </div>
+
+        <%--<script>--%>
+            <%--$(document).ready(function () {--%>
+                <%--var date_input = $('input[name="date"]'); //our date input has the name "date"--%>
+                <%--var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";--%>
+                <%--var options = {--%>
+                    <%--format: 'mm/dd/yyyy',--%>
+                    <%--container: container,--%>
+                    <%--todayHighlight: true,--%>
+                    <%--autoclose: true,--%>
+                <%--};--%>
+                <%--date_input.datepicker(options);--%>
+            <%--})--%>
+        <%--</script>--%>
+
+        <div style="text-align: center">
+            <input type="submit" value="Retrieve Dataset" class="btn" style="background: lawngreen">
         </div>
         <%--<table>--%>
         <%--<tr>--%>
