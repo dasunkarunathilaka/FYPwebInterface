@@ -4,11 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import services.DBServicePostGreIml;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
+import java.sql.SQLException;
 
 /**
  * Created by Dasun K on 9/26/2018.
@@ -17,18 +19,10 @@ import java.nio.charset.Charset;
 @Controller
 public class HomeController {
 
-    private static final String INTERNAL_FILE = "Assignemt_TT_Swing.pdf";
+//    private static final String INTERNAL_FILE = "Assignemt_TT_Swing.pdf";
+    private static final String INTERNAL_FILE = "cdr.csv";
     private static final String EXTERNAL_FILE_PATH = "C:/Users/User/Desktop/Codegen/HotelReservationsSystem.zip";
     //TODO : file location = resources/cdr.csv <- make this downloadable
-
-
-//    @RequestMapping(value = "/")
-//    public ModelAndView home(){
-//        ModelAndView mav = new ModelAndView("home");
-//
-//        mav.addObject("a","abc");
-//        return mav;
-//    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getInput() {
@@ -38,6 +32,11 @@ public class HomeController {
     @RequestMapping(value = "/postInput", method = RequestMethod.POST)
     public String postInput(@RequestParam("userInput") String userInput) {
         System.out.println("User Input is : " + userInput);
+//        try {
+//            DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]","")));
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
         return "downloadPage";
 
     }
