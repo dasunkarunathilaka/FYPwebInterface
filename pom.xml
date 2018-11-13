@@ -34,7 +34,7 @@
                 <version>2.4</version>
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                    <warName>Spring4MVCFileDownloadExample</warName>
+                    <warName>dataint</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
