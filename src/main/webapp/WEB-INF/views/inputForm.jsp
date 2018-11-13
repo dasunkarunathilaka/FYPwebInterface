@@ -57,16 +57,6 @@
     <%--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4kJsyBmt7Vn4UJnmgldPaWOibZTm8ptw1E_JasDPHhMVDahWoYw" alt="sample_image" style="width:100%;">--%>
     <form:form action="postInput" method="post">
         <div class="col-xs-4 form-margin">
-            <h5>Service Provider :</h5>
-        </div>
-        <div class="form-group col-xs-8 form-margin">
-            <select class="form-control" id="exampleFormControlSelect1">
-                <option>Provider 1</option>
-                <option>Provider 2</option>
-                <option>Provider 3</option>
-            </select>
-        </div>
-        <div class="col-xs-4 form-margin">
             <h5>Number of Records :</h5>
         </div>
         <div class="form-group col-xs-8 form-margin">

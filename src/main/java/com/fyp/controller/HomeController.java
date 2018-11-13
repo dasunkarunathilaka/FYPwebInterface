@@ -32,11 +32,11 @@ public class HomeController {
     @RequestMapping(value = "/postInput", method = RequestMethod.POST)
     public String postInput(@RequestParam("userInput") String userInput) {
         System.out.println("User Input is : " + userInput);
-//        try {
-//            DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]","")));
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]","")));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return "downloadPage";
 
     }
