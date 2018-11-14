@@ -1,9 +1,12 @@
 package com.fyp.controller;
 
+import com.opencsv.CSVWriter;
+import model.CDRModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import services.CSVFileWriterService;
 import services.DBServicePostGreIml;
 
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +14,7 @@ import java.io.*;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by Dasun K on 9/26/2018.
@@ -19,8 +23,8 @@ import java.sql.SQLException;
 @Controller
 public class HomeController {
 
-    private static final String INTERNAL_FILE = "Assignemt_TT_Swing.pdf";
-//    private static final String INTERNAL_FILE = "cdr.csv";
+   // private static final String INTERNAL_FILE = "Assignemt_TT_Swing.pdf";
+    private static final String INTERNAL_FILE = "cdr.csv";
     private static final String EXTERNAL_FILE_PATH = "C:/Users/User/Desktop/Codegen/HotelReservationsSystem.zip";
     //TODO : file location = resources/cdr.csv <- make this downloadable
 
@@ -33,10 +37,13 @@ public class HomeController {
     public String postInput(@RequestParam("userInput") String userInput) {
         System.out.println("User Input is : " + userInput);
         try {
-            DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]","")));
+            ArrayList<CDRModel> list = DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]","")));
+            CSVFileWriterService.getInstance().writeArray(list,INTERNAL_FILE);        //creates the csv file
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return "downloadPage";

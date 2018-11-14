@@ -21,15 +21,15 @@ public class CSVFileWriterService
         return instance;
     }
 
-    public void writeArray(ArrayList<CDRModel> input) throws IOException {
-        String csv = "resources//cdr.csv";
+    public void writeArray(ArrayList<CDRModel> input, String location) throws IOException {
+        String csv = location;
         ArrayList<String> writable = new ArrayList<String>();
         for (CDRModel model : input) {
             writable.add(model.getJSONString());
         }
         CSVWriter writer = new CSVWriter(new FileWriter(csv));
-//        writer.writeAll((Iterable<String[]>) writable);
-        System.out.println("CSV File written successfully All at a time");
+        writer.writeAll((Iterable<String[]>) writable);
+        System.out.println("CSV File written successfully All at a time at : "+location);
         writer.close();
     }
 
