@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class PostgreConnector {
     private static PostgreConnector instance = null;
     private Connection connection = null;
-    private String host = "128.199.180.172";
+    private String host = "localhost";
     private int postgrePort = 5432;
     private String database = "cdr_test";
     private String username = "postgres";
