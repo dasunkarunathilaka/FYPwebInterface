@@ -19,8 +19,8 @@ import java.sql.SQLException;
 @Controller
 public class HomeController {
 
-//    private static final String INTERNAL_FILE = "Assignemt_TT_Swing.pdf";
-    private static final String INTERNAL_FILE = "cdr.csv";
+    private static final String INTERNAL_FILE = "Assignemt_TT_Swing.pdf";
+//    private static final String INTERNAL_FILE = "cdr.csv";
     private static final String EXTERNAL_FILE_PATH = "C:/Users/User/Desktop/Codegen/HotelReservationsSystem.zip";
     //TODO : file location = resources/cdr.csv <- make this downloadable
 
