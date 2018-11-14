@@ -33,7 +33,7 @@ public class DBServicePostGreIml implements DBService {
         String sql = "SELECT * FROM "+tableName+" LIMIT "+numObjects+"";
         ResultSet rs = statement.executeQuery(sql);
         System.out.println("Results taken successfully, count = "+numObjects);
-        statement.close();
+
 
         while (rs.next())
         {
@@ -44,6 +44,7 @@ public class DBServicePostGreIml implements DBService {
                     rs.getString("datetime"),
                     rs.getString("duration")));
         }
+        statement.close();
         return result;
     }
 
