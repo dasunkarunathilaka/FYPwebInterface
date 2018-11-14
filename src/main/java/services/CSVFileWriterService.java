@@ -22,13 +22,16 @@ public class CSVFileWriterService
     }
 
     public void writeArray(ArrayList<CDRModel> input) throws IOException {
+
+//        CDRModel has 6 fields --> 6 items in each array (for each row)
         String csv = "/tmp/dataint/cdr.csv";
-        ArrayList<String> writable = new ArrayList<String>();
+        ArrayList<String[]> writable = new ArrayList<>();
         for (CDRModel model : input) {
-            writable.add(model.getJSONString());
+            String cdrString = model.getJSONString();
+            writable.add(cdrString.split(","));
         }
         CSVWriter writer = new CSVWriter(new FileWriter(csv));
-//        writer.writeAll((Iterable<String[]>) writable);
+        writer.writeAll((Iterable<String[]>) writable);
         System.out.println("CSV File written successfully All at a time");
         writer.close();
     }
