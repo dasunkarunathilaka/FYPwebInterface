@@ -79,7 +79,7 @@ public class HomeController {
         String mimeType = URLConnection.guessContentTypeFromName(file.getName());
         if (mimeType == null) {
             System.out.println("mimetype is not detectable, will take default");
-            mimeType = "application/octet-stream";
+            mimeType = "text/csv";
         }
 
         System.out.println("mimetype : " + mimeType);
