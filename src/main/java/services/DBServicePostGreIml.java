@@ -27,7 +27,7 @@ public class DBServicePostGreIml implements DBService {
     private DBServicePostGreIml(){}
 
     @Override
-    public ArrayList<CDRModel> retrieveCDR(int numObjects) throws SQLException {
+    public ArrayList<CDRModel> retrieveCDR(int numObjects) throws SQLException, ClassNotFoundException {
         ArrayList<CDRModel> result = new ArrayList<CDRModel>();
         Statement statement = PostgreConnector.getInstance().getConnection().createStatement();
         String sql = "SELECT * FROM "+tableName+" LIMIT "+numObjects+"";

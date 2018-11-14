@@ -16,7 +16,7 @@ public interface DBService
      * @param numObjects
      * @return array list of CDRModel
      */
-    public abstract ArrayList<CDRModel> retrieveCDR(int numObjects) throws SQLException;
+    public abstract ArrayList<CDRModel> retrieveCDR(int numObjects) throws SQLException, ClassNotFoundException;
 
 
     /**
