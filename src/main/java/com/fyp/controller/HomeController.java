@@ -1,9 +1,11 @@
 package com.fyp.controller;
 
+import model.CDRModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import services.CSVFileWriterService;
 import services.DBServicePostGreIml;
 
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +13,7 @@ import java.io.*;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by Dasun K on 9/26/2018.
@@ -20,8 +23,10 @@ import java.sql.SQLException;
 public class HomeController {
 
     private static final String INTERNAL_FILE = "Assignemt_TT_Swing.pdf";
-//    private static final String INTERNAL_FILE = "cdr.csv";
-    private static final String EXTERNAL_FILE_PATH = "C:/Users/User/Desktop/Codegen/HotelReservationsSystem.zip";
+//    private static final String EXTERNAL_FILE_PATH = "C:/Users/User/Desktop/Codegen/cdr.csv";
+
+//    Ubuntu system
+    private static final String EXTERNAL_FILE_PATH = "/tmp/dataint/cdr.csv";
     //TODO : file location = resources/cdr.csv <- make this downloadable
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -32,11 +37,18 @@ public class HomeController {
     @RequestMapping(value = "/postInput", method = RequestMethod.POST)
     public String postInput(@RequestParam("userInput") String userInput) {
         System.out.println("User Input is : " + userInput);
+
+        ArrayList<CDRModel> results = new ArrayList<>();
         try {
-            DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]","")));
-        } catch (SQLException e) {
+            results = DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]","")));
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        }
+
+        try {
+            CSVFileWriterService.getInstance().writeArray(results);
+        } catch (IOException e) {
+            System.out.println("CSV not created.");
             e.printStackTrace();
         }
         return "downloadPage";

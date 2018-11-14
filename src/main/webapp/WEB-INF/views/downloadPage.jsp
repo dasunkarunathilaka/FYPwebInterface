@@ -63,9 +63,9 @@
     Click on following link to download CDR data set.<br/><br/>
 
 
-    <a href="<c:url value='/download/internal' />">Download This File</a>
+    <%--<a href="<c:url value='/download/internal' />">Download This File</a>--%>
     <br/>
-    <%--<a href="<c:url value='/download/external' />">Download This File (located outside project, on file system)</a>--%>
+    <a href="<c:url value='/download/external' />">Download This File </a>
 
 
 </div>

@@ -45,6 +45,8 @@ public class DBServicePostGreIml implements DBService {
                     rs.getString("duration")));
         }
         statement.close();
+
+//        result.add(new CDRModel("1", "2", "3", "4", "sdfe", "sdfe"));
         return result;
     }
 

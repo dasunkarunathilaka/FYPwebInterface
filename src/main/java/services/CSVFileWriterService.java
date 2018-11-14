@@ -22,7 +22,7 @@ public class CSVFileWriterService
     }
 
     public void writeArray(ArrayList<CDRModel> input) throws IOException {
-        String csv = "resources//cdr.csv";
+        String csv = "/tmp/dataint/cdr.csv";
         ArrayList<String> writable = new ArrayList<String>();
         for (CDRModel model : input) {
             writable.add(model.getJSONString());
