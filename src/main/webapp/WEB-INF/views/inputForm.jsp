@@ -69,23 +69,23 @@
             </select>
         </div>
 
-        <div class="col-xs-4 form-margin">
-            <h5>Start Date :</h5>
-        </div>
+        <%--<div class="col-xs-4 form-margin">--%>
+            <%--<h5>Start Date :</h5>--%>
+        <%--</div>--%>
 
-        <div class="form-group col-xs-8 form-margin">
-            <!-- Date input -->
-            <input id="startDate" name="date" placeholder="Start date" type="date" />
-        </div>
+        <%--<div class="form-group col-xs-8 form-margin">--%>
+            <%--<!-- Date input -->--%>
+            <%--<input id="startDate" name="date" placeholder="Start date" type="date" />--%>
+        <%--</div>--%>
 
-        <div class="col-xs-4 form-margin">
-            <h5>End Date :</h5>
-        </div>
+        <%--<div class="col-xs-4 form-margin">--%>
+            <%--<h5>End Date :</h5>--%>
+        <%--</div>--%>
 
-        <div class="form-group col-xs-8 form-margin">
-            <!-- Date input -->
-            <input id="endDate" name="date" placeholder="End date" type="date" />
-        </div>
+        <%--<div class="form-group col-xs-8 form-margin">--%>
+            <%--<!-- Date input -->--%>
+            <%--<input id="endDate" name="date" placeholder="End date" type="date" />--%>
+        <%--</div>--%>
 
         <div style="text-align: center">
             <input type="submit" value="Retrieve Dataset" class="btn" style="background: lawngreen">

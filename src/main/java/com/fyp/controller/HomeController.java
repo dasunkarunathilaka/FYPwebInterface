@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import services.CSVFileWriterService;
 import services.DBServicePostGreIml;
+import services.RegisterUsers;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -23,15 +24,11 @@ import java.util.ArrayList;
 public class HomeController {
 
     private static final String INTERNAL_FILE = "Assignemt_TT_Swing.pdf";
-//    private static final String EXTERNAL_FILE_PATH = "C:/Users/User/Desktop/Codegen/cdr.csv";
-
-//    Ubuntu system
     private static final String EXTERNAL_FILE_PATH = "/tmp/dataint/cdr.csv";
-    //TODO : file location = resources/cdr.csv <- make this downloadable
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getInput() {
-        return "inputForm";
+        return "home";
     }
 
     @RequestMapping(value = "/postInput", method = RequestMethod.POST)
@@ -40,7 +37,7 @@ public class HomeController {
 
         ArrayList<CDRModel> results = new ArrayList<>();
         try {
-            results = DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]","")));
+            results = DBServicePostGreIml.getInstance().retrieveCDR(Integer.parseInt(userInput.replaceAll("[ ]", "")));
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -101,4 +98,36 @@ public class HomeController {
         //Copy bytes from source to destination(outputstream in this example), closes both streams.
         FileCopyUtils.copy(inputStream, response.getOutputStream());
     }
+
+
+    @RequestMapping(value = "/userSignupForm", method = RequestMethod.GET)
+    public String userSignupForm(){
+        return "signupForm";
+    }
+
+    @RequestMapping(value = "/userLoginForm", method = RequestMethod.GET)
+    public String userLoginForm(){
+        return "loginForm";
+    }
+
+    @RequestMapping(value = "/userSignup", method = RequestMethod.POST)
+    public String userSignup(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("name") String name, @RequestParam("role") String role) throws SQLException {
+        RegisterUsers registerUsers = new RegisterUsers();
+        registerUsers.userSignup(username, password, name, role);
+        return "inputForm";    // Next jsp page to render.
+    }
+
+    @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
+    public String userLogin(@RequestParam("username") String username, @RequestParam("password") String password) throws SQLException {
+        RegisterUsers registerUsers = new RegisterUsers();
+        boolean loginSuccess = registerUsers.userLogin(username, password);
+
+        if (loginSuccess){
+            return "inputForm";
+        }else {
+            return "loginFailed";
+        }
+    }
+
+
 }
